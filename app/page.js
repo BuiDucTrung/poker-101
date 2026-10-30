@@ -6,8 +6,8 @@ import { dealHand, discardKey, handName, evaluate5, HAND_NAMES } from '../lib/po
 
 const LEVELS = [
   { id: 0, label: 'Ngẫu nhiên' },
-  { id: 2, label: 'Từ Thú trở lên' },
-  { id: 4, label: 'Từ Sảnh trở lên' },
+  { id: 2, label: 'Thú trở lên' },
+  { id: 4, label: 'Sảnh trở lên' },
 ];
 
 export default function Home() {
@@ -108,14 +108,14 @@ export default function Home() {
         </div>
         <div className="stats">
           <div><b>{stats.done}</b><span>Đã xong</span></div>
-          <div><b>{stats.firstTry}</b><span>Đúng ngay lần đầu</span></div>
+          <div><b>{stats.firstTry}</b><span>Đúng lần đầu</span></div>
           <div><b>{stats.streak}</b><span>Chuỗi đúng</span></div>
         </div>
       </header>
 
       <section className="instructions">
-        Bạn là <b>dealer</b>. Từ 2 lá của bạn và 5 lá chung, <b>bấm vào 2 lá cần bỏ</b> (lá được chọn sẽ
-        nhô lên), giữ lại 5 lá tạo thành tay bài mạnh nhất, rồi bấm <b>Xác nhận</b>.
+        Bạn là <b>dealer</b>. <b>Bấm vào 2 lá cần bỏ</b> (lá được chọn sẽ nhô lên) để giữ lại 5 lá mạnh
+        nhất, rồi bấm <b>Xác nhận</b>.
       </section>
 
       <div className="levels">
