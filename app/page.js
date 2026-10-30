@@ -33,8 +33,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!hand) return <main className="page" />;
-
   const toggle = (idx) => {
     if (status === 'correct') return;
     if (status === 'wrong') setStatus('playing');
@@ -74,11 +72,11 @@ export default function Home() {
 
   // Tay bài người học đã chọn (để giải thích khi sai)
   const chosenFive =
-    selected.length === 2 ? hand.cards.filter((_, i) => !selected.includes(i)) : null;
+    hand && selected.length === 2 ? hand.cards.filter((_, i) => !selected.includes(i)) : null;
   const chosenScore = chosenFive ? evaluate5(chosenFive) : null;
 
   // Một đáp án đúng để hiển thị gợi ý / kết quả
-  const [ai, bi] = hand.correctKeys[0].split('-').map(Number);
+  const [ai, bi] = hand ? hand.correctKeys[0].split('-').map(Number) : [-1, -1];
   const answerSet = new Set([ai, bi]);
 
   const highlightFor = (idx) => {
@@ -132,6 +130,7 @@ export default function Home() {
         ))}
       </div>
 
+      {hand && (<>
       <section className="table">
         <div className="zone">
           <div className="zone-label">Bài chung (Community cards)</div>
@@ -199,6 +198,7 @@ export default function Home() {
           )}
         </div>
       </section>
+      </>)}
 
       <details className="ranking">
         <summary>Bảng xếp hạng tay bài (mạnh → yếu)</summary>
